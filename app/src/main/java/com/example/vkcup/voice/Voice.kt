@@ -3,6 +3,7 @@ package com.example.vkcup.voice
 import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.media.AudioAttributes
 import android.media.MediaPlayer
@@ -43,6 +44,7 @@ class Voice : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_voice)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         fileName = Environment.getExternalStorageDirectory().toString() + "/record.mpeg4"
         btm = findViewById(R.id.button)
         textView = findViewById(R.id.text)

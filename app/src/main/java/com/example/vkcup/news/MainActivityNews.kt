@@ -1,5 +1,6 @@
 package com.example.vkcup.news
 
+import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.SystemClock.sleep
@@ -17,6 +18,7 @@ class MainActivityNews : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_news)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         title = "News"
         val viewModel = ViewModelProvider(this)

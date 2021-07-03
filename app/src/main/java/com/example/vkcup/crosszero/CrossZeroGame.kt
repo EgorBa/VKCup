@@ -1,8 +1,10 @@
 package com.example.vkcup.crosszero
 
 import android.app.AlertDialog
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
+import android.util.Log
 import android.util.Log.d
 import android.view.View
 import android.widget.Button
@@ -47,6 +49,7 @@ class CrossZeroGame : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cross_zero_game)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         id = intent.getStringExtra(ID)
         name = intent.getStringExtra(NAME)
         view = findViewById(R.id.me_circle)
@@ -64,6 +67,7 @@ class CrossZeroGame : AppCompatActivity() {
         val sq8: ImageView = findViewById(R.id.sq8)
         val sq9: ImageView = findViewById(R.id.sq9)
         val submit: Button = findViewById(R.id.submit)
+        submit.visibility = View.INVISIBLE
         allSquares = arrayOf(sq1, sq2, sq3, sq4, sq5, sq6, sq7, sq8, sq9)
         clearAll()
         getOp()
@@ -83,13 +87,13 @@ class CrossZeroGame : AppCompatActivity() {
                 d("cross", getBinaryFormat(1).toString())
                 d("zero", getBinaryFormat(-1).toString())
                 allSquares[curPos].isClickable = false
+                root.child("users").child(id.toString()).child(turn).setValue("0")
                 if (check(a)) {
                     win()
                 } else {
                     if (endGame()) {
                         draw()
                     } else {
-                        root.child("users").child(id.toString()).child(turn).setValue("0")
                         root.child("users").child(id.toString()).child(cross)
                             .setValue(getBinaryFormat(1).toString())
                         root.child("users").child(id.toString()).child(zero)
@@ -102,6 +106,7 @@ class CrossZeroGame : AppCompatActivity() {
                         submit.isClickable = false
                     }
                 }
+                submit.visibility = View.INVISIBLE
             }
         }
 
@@ -115,8 +120,6 @@ class CrossZeroGame : AppCompatActivity() {
                         val map = p0.value as Map<String, String>
                         if (map.keys.contains("op")) {
                             op = map["op"]
-                            val opponent: TextView = findViewById(R.id.opponent)
-                            opponent.text = map["name"]
                             val isYourTurn = map[turn] == "1"
                             isPlayCross = map[playForCross] == "1"
                             if (isYourTurn) {
@@ -124,6 +127,7 @@ class CrossZeroGame : AppCompatActivity() {
                                 val curCross = Integer.parseInt(map[cross])
                                 val curZero = Integer.parseInt(map[zero])
                                 update(curCross, curZero)
+                                submit.visibility = View.VISIBLE
                                 val a = if (isPlayCross) {
                                     1
                                 } else {
@@ -159,7 +163,6 @@ class CrossZeroGame : AppCompatActivity() {
                         } else {
                             waitText()
                         }
-                        d("lol", map.toString())
                     }
                 }
 
@@ -187,6 +190,13 @@ class CrossZeroGame : AppCompatActivity() {
                 if (turnText.text == find3) {
                     turnText.text = find
                     sleep(500)
+                }
+                if (turnText.text != find &&
+                    turnText.text != find1 &&
+                    turnText.text != find2 &&
+                    turnText.text != find3
+                ) {
+                    break
                 }
             }
         }
@@ -241,10 +251,12 @@ class CrossZeroGame : AppCompatActivity() {
                         val op = str.split(" ")[0]
                         val nam = str.split(" ")[1]
                         if (op != id) {
+                            val opponent: TextView = findViewById(R.id.opponent)
+                            opponent.text = nam
                             root.child("players").removeValue()
                             root.child("users").child(id.toString()).child(turn).setValue("0")
                             root.child("users").child(id.toString()).child("op").setValue(op)
-                            root.child("users").child(id.toString()).child("name").setValue(nam)
+                            //root.child("users").child(id.toString()).child("name").setValue(nam)
                             root.child("users").child(id.toString()).child(playForCross)
                                 .setValue("0")
                             root.child("users").child(id.toString()).child(cross).setValue("0")
@@ -253,7 +265,7 @@ class CrossZeroGame : AppCompatActivity() {
                             root.child("users").child(op).child(cross).setValue("0")
                             root.child("users").child(op).child(zero).setValue("0")
                             root.child("users").child(op).child("op").setValue(id.toString())
-                            root.child("users").child(op).child("name").setValue(name.toString())
+                            //root.child("users").child(op).child("name").setValue(name.toString())
                             root.child("users").child(op).child(turn).setValue("1")
                         }
                     } else {
@@ -276,35 +288,27 @@ class CrossZeroGame : AppCompatActivity() {
 
     private fun check(a: Int): Boolean {
         if (game[0][0] + game[0][1] + game[0][2] == 3 * a) {
-            //winLine4.visibility = View.VISIBLE
             return true
         }
         if (game[1][0] + game[1][1] + game[1][2] == 3 * a) {
-            //winLine5.visibility = View.VISIBLE
             return true
         }
         if (game[2][0] + game[2][1] + game[2][2] == 3 * a) {
-            // winLine6.visibility = View.VISIBLE
             return true
         }
         if (game[0][0] + game[1][0] + game[2][0] == 3 * a) {
-            // winLine1.visibility = View.VISIBLE
             return true
         }
         if (game[0][1] + game[1][1] + game[2][1] == 3 * a) {
-            // winLine2.visibility = View.VISIBLE
             return true
         }
         if (game[0][2] + game[1][2] + game[2][2] == 3 * a) {
-            //winLine3.visibility = View.VISIBLE
             return true
         }
         if (game[0][0] + game[1][1] + game[2][2] == 3 * a) {
-            //winLine7.visibility = View.VISIBLE
             return true
         }
         if (game[0][2] + game[1][1] + game[2][0] == 3 * a) {
-            //winLine8.visibility = View.VISIBLE
             return true
         }
         return false
@@ -322,34 +326,46 @@ class CrossZeroGame : AppCompatActivity() {
     }
 
     private fun lose() {
+        d("game", "lose")
         scoreOp.text = "1"
+        root.child("users").child(id.toString()).child("op").setValue(null)
         view.background = resources.getDrawable(R.drawable.circle3)
-        root.child("users").child(op.toString()).child(cross)
-            .setValue(getBinaryFormat(1).toString())
-        root.child("users").child(op.toString()).child(zero)
-            .setValue(getBinaryFormat(-1).toString())
-        root.child("users").child(op.toString()).child(turn).setValue("1")
+        if (op != null) {
+            root.child("users").child(op.toString()).child(cross)
+                .setValue(getBinaryFormat(1).toString())
+            root.child("users").child(op.toString()).child(zero)
+                .setValue(getBinaryFormat(-1).toString())
+            root.child("users").child(op.toString()).child(turn).setValue("1")
+        }
         showAlert()
     }
 
     private fun win() {
+        d("game", "win")
         scoreMe.text = "1"
+        root.child("users").child(id.toString()).child("op").setValue(null)
         view.background = resources.getDrawable(R.drawable.circle2)
-        root.child("users").child(op.toString()).child(cross)
-            .setValue(getBinaryFormat(1).toString())
-        root.child("users").child(op.toString()).child(zero)
-            .setValue(getBinaryFormat(-1).toString())
-        root.child("users").child(op.toString()).child(turn).setValue("1")
+        if (op != null) {
+            root.child("users").child(op.toString()).child(cross)
+                .setValue(getBinaryFormat(1).toString())
+            root.child("users").child(op.toString()).child(zero)
+                .setValue(getBinaryFormat(-1).toString())
+            root.child("users").child(op.toString()).child(turn).setValue("1")
+        }
         showAlert()
         set("win")
     }
 
     private fun draw() {
-        root.child("users").child(op.toString()).child(cross)
-            .setValue(getBinaryFormat(1).toString())
-        root.child("users").child(op.toString()).child(zero)
-            .setValue(getBinaryFormat(-1).toString())
-        root.child("users").child(op.toString()).child(turn).setValue("1")
+        d("game", "draw")
+        root.child("users").child(id.toString()).child("op").setValue(null)
+        if (op != null) {
+            root.child("users").child(op.toString()).child(cross)
+                .setValue(getBinaryFormat(1).toString())
+            root.child("users").child(op.toString()).child(zero)
+                .setValue(getBinaryFormat(-1).toString())
+            root.child("users").child(op.toString()).child(turn).setValue("1")
+        }
         showAlert()
     }
 

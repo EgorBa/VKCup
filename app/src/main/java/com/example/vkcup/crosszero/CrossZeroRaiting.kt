@@ -1,6 +1,7 @@
 package com.example.vkcup.crosszero
 
 import android.content.Context
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.GestureDetector
 import android.view.GestureDetector.SimpleOnGestureListener
@@ -25,6 +26,7 @@ class CrossZeroRaiting : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cross_zero_raiting)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         title = "Ratings"
         val recyclerView: RecyclerView = findViewById(R.id.my_recycler_view)
         root.child("users").addListenerForSingleValueEvent(object : ValueEventListener {
@@ -37,7 +39,7 @@ class CrossZeroRaiting : AppCompatActivity() {
                     for (i in map.keys) {
                         ratings.add(Rating(map[i]?.get("name"), map[i]?.get("win")))
                     }
-                    ratings.sortByDescending { list -> list.wins }
+                    ratings.sortByDescending { list -> list.wins as Int }
                     val ratingAdapter =
                         RatingAdapter(ratings)
                     recyclerView.adapter = ratingAdapter

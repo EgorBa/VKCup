@@ -2,6 +2,7 @@ package com.example.vkcup.taxi
 
 import android.Manifest
 import android.app.AlertDialog
+import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationListener
@@ -40,6 +41,7 @@ class Taxi : AppCompatActivity(), OnMapReadyCallback {
 
         binding = ActivityTaxiBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment

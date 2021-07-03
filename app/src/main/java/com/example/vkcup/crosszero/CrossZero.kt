@@ -1,6 +1,7 @@
 package com.example.vkcup.crosszero
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log.d
@@ -22,6 +23,7 @@ class CrossZero : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cross_zero)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         title = "Cross-Zero"
         auth = FirebaseAuth.getInstance()
         id = auth.uid

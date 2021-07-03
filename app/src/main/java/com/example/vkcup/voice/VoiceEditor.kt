@@ -1,5 +1,6 @@
 package com.example.vkcup.voice
 
+import android.content.pm.ActivityInfo
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Environment
@@ -27,6 +28,7 @@ class VoiceEditor : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_voice_editor)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         title = "Voice editor"
         fileName = Environment.getExternalStorageDirectory().toString() + "/record.mpeg4"
         play = findViewById(R.id.play)

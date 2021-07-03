@@ -256,7 +256,6 @@ class CrossZeroGame : AppCompatActivity() {
                             root.child("players").removeValue()
                             root.child("users").child(id.toString()).child(turn).setValue("0")
                             root.child("users").child(id.toString()).child("op").setValue(op)
-                            //root.child("users").child(id.toString()).child("name").setValue(nam)
                             root.child("users").child(id.toString()).child(playForCross)
                                 .setValue("0")
                             root.child("users").child(id.toString()).child(cross).setValue("0")
@@ -265,7 +264,6 @@ class CrossZeroGame : AppCompatActivity() {
                             root.child("users").child(op).child(cross).setValue("0")
                             root.child("users").child(op).child(zero).setValue("0")
                             root.child("users").child(op).child("op").setValue(id.toString())
-                            //root.child("users").child(op).child("name").setValue(name.toString())
                             root.child("users").child(op).child(turn).setValue("1")
                         }
                     } else {

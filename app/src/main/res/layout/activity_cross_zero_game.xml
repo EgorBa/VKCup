@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/vk_blue"
+    tools:context=".crosszero.CrossZeroGame">
+
+    <View
+        android:id="@+id/op_circle"
+        style="@style/some_id"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:alpha="0.4"
+        android:background="@drawable/circle1"
+        app:layout_constraintBottom_toTopOf="@id/turn" />
+
+    <TextView
+        android:id="@+id/opponent"
+        style="@style/some_id"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="@string/name"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@id/score"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="8" />
+
+    <TextView
+        android:id="@+id/score"
+        style="@style/some_id"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="@string/zero"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@id/turn"
+        app:layout_constraintTop_toBottomOf="@id/opponent"
+        app:layout_constraintVertical_weight="6"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:id="@+id/turn"
+        style="@style/some_id"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="@string/your_turn"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@id/sq1"
+        app:layout_constraintTop_toBottomOf="@id/score"
+        app:layout_constraintVertical_weight="8" />
+
+    <ImageView
+        android:id="@+id/line1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/rectangle13"
+        app:layout_constraintBottom_toTopOf="@id/submit"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@id/sq1"
+        app:layout_constraintRight_toLeftOf="@id/sq2"
+        app:layout_constraintTop_toBottomOf="@id/turn" />
+
+    <ImageView
+        android:id="@+id/line2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/rectangle13"
+        app:layout_constraintBottom_toTopOf="@id/submit"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@id/sq2"
+        app:layout_constraintRight_toLeftOf="@id/sq3"
+        app:layout_constraintTop_toBottomOf="@id/turn" />
+
+    <ImageView
+        android:id="@+id/sq1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="60dp"
+        android:src="@drawable/rectangle1"
+        app:layout_constraintBottom_toTopOf="@id/line3"
+        app:layout_constraintHorizontal_weight="5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/line1"
+        app:layout_constraintTop_toBottomOf="@id/turn"
+        app:layout_constraintVertical_weight="5" />
+
+    <ImageView
+        android:id="@+id/sq2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/rectangle1"
+        app:layout_constraintBottom_toTopOf="@id/line3"
+        app:layout_constraintHorizontal_weight="5"
+        app:layout_constraintLeft_toRightOf="@id/line1"
+        app:layout_constraintRight_toLeftOf="@id/line2"
+        app:layout_constraintTop_toBottomOf="@id/turn" />
+
+    <ImageView
+        android:id="@+id/sq3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="60dp"
+        android:src="@drawable/rectangle1"
+        app:layout_constraintBottom_toTopOf="@id/line3"
+        app:layout_constraintHorizontal_weight="5"
+        app:layout_constraintLeft_toRightOf="@id/line2"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/turn" />
+
+
+    <ImageView
+        android:id="@+id/line3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
+        android:src="@drawable/rectangle12"
+        app:layout_constraintBottom_toTopOf="@+id/sq4"
+        app:layout_constraintTop_toBottomOf="@id/sq1"
+        app:layout_constraintVertical_weight="1" />
+
+    <ImageView
+        android:id="@+id/sq4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="60dp"
+        android:src="@drawable/rectangle1"
+        app:layout_constraintBottom_toTopOf="@id/line4"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/line1"
+        app:layout_constraintTop_toBottomOf="@id/line3"
+        app:layout_constraintVertical_weight="5" />
+
+    <ImageView
+        android:id="@+id/sq5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/rectangle1"
+        app:layout_constraintBottom_toTopOf="@id/line4"
+        app:layout_constraintLeft_toRightOf="@id/line1"
+        app:layout_constraintRight_toLeftOf="@id/line2"
+        app:layout_constraintTop_toBottomOf="@id/line3" />
+
+    <ImageView
+        android:id="@+id/sq6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="60dp"
+        android:src="@drawable/rectangle1"
+        app:layout_constraintBottom_toTopOf="@id/line4"
+        app:layout_constraintLeft_toRightOf="@id/line2"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line3" />
+
+
+    <ImageView
+        android:id="@+id/line4"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
+        android:src="@drawable/rectangle12"
+        app:layout_constraintBottom_toTopOf="@+id/sq7"
+        app:layout_constraintTop_toBottomOf="@id/sq4"
+        app:layout_constraintVertical_weight="1" />
+
+    <ImageView
+        android:id="@+id/sq7"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="60dp"
+        android:src="@drawable/rectangle1"
+        app:layout_constraintBottom_toTopOf="@id/submit"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/line1"
+        app:layout_constraintTop_toBottomOf="@id/line4"
+        app:layout_constraintVertical_weight="5" />
+
+    <ImageView
+        android:id="@+id/sq8"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/rectangle1"
+        app:layout_constraintBottom_toTopOf="@id/submit"
+        app:layout_constraintLeft_toRightOf="@id/line1"
+        app:layout_constraintRight_toLeftOf="@id/line2"
+        app:layout_constraintTop_toBottomOf="@id/line4" />
+
+    <ImageView
+        android:id="@+id/sq9"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="60dp"
+        android:src="@drawable/rectangle1"
+        app:layout_constraintBottom_toTopOf="@id/submit"
+        app:layout_constraintLeft_toRightOf="@id/line2"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line4" />
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
+        android:text="@string/submit"
+        app:layout_constraintBottom_toTopOf="@id/me"
+        app:layout_constraintTop_toBottomOf="@id/sq7"
+        app:layout_constraintVertical_weight="3">
+
+    </Button>
+
+    <View
+        android:id="@+id/me_circle"
+        style="@style/some_id"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="10dp"
+        android:alpha="0.4"
+        android:background="@drawable/cirle"
+        app:layout_constraintTop_toBottomOf="@id/submit" />
+
+    <TextView
+        android:id="@+id/me"
+        style="@style/some_id"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="@string/zero"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/submit"
+        app:layout_constraintVertical_weight="8" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

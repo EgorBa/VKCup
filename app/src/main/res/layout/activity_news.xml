@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/motionLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    app:layoutDescription="@xml/scene_main">
+
+    <FrameLayout
+        android:id="@+id/bottomCard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/circlr_corner">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginBottom="100dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/image1"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/circle_pros"
+            android:src="@drawable/ic_baseline_thumb_up_24" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/circle_pros"
+            android:src="@drawable/ic_baseline_thumb_down_24" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/topCard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/circlr_corner">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginBottom="100dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/likeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/circle_pros"
+            android:src="@drawable/ic_baseline_thumb_up_24" />
+
+        <ImageButton
+            android:id="@+id/passButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/circle_pros"
+            android:src="@drawable/ic_baseline_thumb_down_24" />
+
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/likeIcon"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/backround_circle"
+        android:src="@drawable/ic_baseline_favorite_border"
+        app:tint="#fbc02d" />
+
+    <ImageView
+        android:id="@+id/passIcon"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/backround_circle"
+        android:src="@drawable/ic_baseline_close"
+        app:tint="#e64a19" />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

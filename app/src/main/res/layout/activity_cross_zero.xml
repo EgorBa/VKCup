@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".crosszero.CrossZero">
+
+    <TextView
+        android:text="@string/cross_zero_name"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:textSize="60sp"
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/name"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="3" />
+
+    <EditText
+        android:layout_margin="20dp"
+        android:text="@string/default_name"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/start"
+        app:layout_constraintTop_toBottomOf="@id/image"
+        app:layout_constraintVertical_weight="1" />
+
+    <Button
+        android:background="@drawable/circle_corner1"
+        android:layout_margin="10dp"
+        android:text="@string/find_op"
+        android:id="@+id/start"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/rating"
+        app:layout_constraintTop_toBottomOf="@id/name"
+        app:layout_constraintVertical_weight="1" />
+
+    <Button
+        android:background="@drawable/circle_corner1"
+        android:layout_margin="10dp"
+        android:text="@string/retings"
+        android:id="@+id/rating"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/start"
+        app:layout_constraintVertical_weight="1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

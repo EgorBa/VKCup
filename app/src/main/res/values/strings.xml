@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">VKCup</string>
+    <string name="your_turn">Твой ход!</string>
+    <string name="op_turn">Ходит соперник</string>
+    <string name="find">Ищем 2-го игрока</string>
+    <string name="find1">Ищем 2-го игрока.</string>
+    <string name="find2">Ищем 2-го игрока..</string>
+    <string name="find3">Ищем 2-го игрока...</string>
+    <string name="name">Игрок</string>
+    <string name="zero">0</string>
+    <string name="submit">Подтвердить</string>
+    <string name="retings">Рэйтинг</string>
+    <string name="find_op">Найти соперника</string>
+    <string name="record">Record</string>
+    <string name="play">Play</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="title_activity_taxi">Map</string>
+    <string name="fast_voice">Быстрый голос</string>
+    <string name="slow_voice">Медленный голос</string>
+    <string name="taxi">Taxi</string>
+    <string name="news">news</string>
+    <string name="cross_zero">cross-zero</string>
+    <string name="voice">voice</string>
+    <string name="cross_zero_name">Крестики нолики</string>
+    <string name="default_name">Введите имя</string>
+    <string name="video">video</string>
+</resources>

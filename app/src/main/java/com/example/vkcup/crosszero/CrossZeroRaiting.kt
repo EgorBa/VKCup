@@ -39,7 +39,7 @@ class CrossZeroRaiting : AppCompatActivity() {
                     for (i in map.keys) {
                         ratings.add(Rating(map[i]?.get("name"), map[i]?.get("win")))
                     }
-                    ratings.sortByDescending { list -> list.wins as Int }
+                    ratings.sortByDescending { list -> Integer.parseInt(list.wins.split(" ")[3])}
                     val ratingAdapter =
                         RatingAdapter(ratings)
                     recyclerView.adapter = ratingAdapter
